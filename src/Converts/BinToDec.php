@@ -14,15 +14,12 @@ class BinToDec
     public function convert(int $bin)
     {
         $result = 0;
-        $multiplier = 1;
         $len = strlen((string)$bin);
-        for ($i=$len-1; $i>=0; $i--) {
-
-            $result += (int)(substr((string)$bin, $i, 1)) * $multiplier;
-
-            $multiplier *= 2;
+        $puissance = $len - 1;
+        for ($i=0; $i < $len; $i++) {
+            $result += (int)(substr((string)$bin, $i, 1)) * 2 ** $puissance;
+            $puissance -= 1;
         }
-
         return $result;
     }
 }
